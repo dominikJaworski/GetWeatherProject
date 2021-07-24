@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import "../CSS/CurrentForecast.css"
 import "../Components/WeatherIcon";
-import {getCurrentDateandTime} from "../OtherFunctions.js";
+import { getCurrentDateandTime } from "../OtherFunctions.js";
 import 'tachyons';
 import WeatherIcon from '../Components/WeatherIcon';
 
@@ -27,14 +27,20 @@ const CurrentForecast = (props) => {
             }
         };
         fn(); //calling the function defined above
-    }, [location]
+    }, []
     )
+
+
 
     if (error) {
         return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
         return <div>Loading...</div>;
-    } else if (weatherData !== null){
+    } else if (weatherData !== null) 
+        if (weatherData.cod == "404") {
+            return <div>data for that location not available</div>
+        }
+        else {
         return (
             <div class="container">
 
@@ -50,7 +56,7 @@ const CurrentForecast = (props) => {
                         <WeatherIcon description={weatherData.weather[0].description}></WeatherIcon>
                         <h1 class="weather-temp">{weatherData.main.temp}</h1>
                         <h3 class="weather-desc">{weatherData.weather[0].description} </h3>
-                        
+
                     </div>
                 </div>
 
@@ -76,7 +82,7 @@ const CurrentForecast = (props) => {
                 </div>
             </div>
         );
-    } 
+    }
     else {
         return <div> not found!</div>
     }
