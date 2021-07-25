@@ -27,7 +27,7 @@ const CurrentForecast = (props) => {
             }
         };
         fn(); //calling the function defined above
-    }, []
+    }, [location]
     )
 
 
@@ -37,7 +37,7 @@ const CurrentForecast = (props) => {
     } else if (!isLoaded) {
         return <div>Loading...</div>;
     } else if (weatherData !== null) 
-        if (weatherData.cod == "404") {
+        if (weatherData.cod === "404") {
             return <div>data for that location not available</div>
         }
         else {

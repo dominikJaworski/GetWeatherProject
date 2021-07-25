@@ -1,5 +1,5 @@
-import React, { Component, useState } from 'react';
-import SearchLocation from './Components/SearchLocation';
+import React, { Component } from 'react';
+//import SearchLocation from './Components/SearchLocation';
 import HourlyForecast from './Components/HourlyForecast';
 import CurrentForecast from './Components/CurrentForecast';
 import BiweeklyForecast from './Components/BiweeklyForecast';
@@ -66,7 +66,7 @@ class App extends Component {
 
     return (
       <div className='tc'>
-        <h1 color="white">Weather forecast</h1>
+        <h1 style={{color: 'white'}}>Weather forecast</h1>
         {/* <SearchLocation searchField={this.onSearchFieldChange}>
         </SearchLocation> */}
 
@@ -87,7 +87,7 @@ class App extends Component {
         <button
           className='current-forecast-button ba tc pa2 white bg-green hover-bg-light-green br2 shadow-2'
           onClick={() => this.onHourlyForecast()}>Hourly Forecast</button>
-          
+
         <button
           className='current-forecast-button ba tc pa2 white bg-purple hover-bg-light-purple br2 shadow-2'
           onClick={() => this.onBiweeklyForecast()}>Biweekly Forecast</button>
