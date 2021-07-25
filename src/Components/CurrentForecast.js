@@ -42,38 +42,38 @@ const CurrentForecast = (props) => {
         }
         else {
         return (
-            <div class="container">
+            <div className="container">
 
-                <div class="weather-side">
-                    <div class="weather-gradient">
+                <div className="weather-side">
+                    <div className="weather-gradient">
 
                     </div>
-                    <div class="date-container">
+                    <div className="date-container">
                         {getCurrentDateandTime()}
                     </div>
-                    <div class="weather-container">
+                    <div className="weather-container">
 
                         <WeatherIcon description={weatherData.weather[0].description}></WeatherIcon>
-                        <h1 class="weather-temp">{weatherData.main.temp}</h1>
-                        <h3 class="weather-desc">{weatherData.weather[0].description} </h3>
+                        <h1 className="weather-temp">{weatherData.main.temp}</h1>
+                        <h3 className="weather-desc">{weatherData.weather[0].description} </h3>
 
                     </div>
                 </div>
 
-                <div class="info-side">
-                    <div class="today-info-container">
-                        <div class="today-info">
-                            <div class="humidity">
-                                <span class="title">HUMIDITY</span>
-                                <span class="value">{weatherData.main.humidity}</span>
+                <div className="info-side">
+                    <div className="today-info-container">
+                        <div className="today-info">
+                            <div className="humidity">
+                                <span className="title">HUMIDITY</span>
+                                <span className="value">{weatherData.main.humidity}</span>
                             </div>
-                            <div class="humidity">
-                                <span class="title">FEELS LIKE</span>
-                                <span class="value">{weatherData.main.feels_like}</span>
+                            <div className="humidity">
+                                <span className="title">FEELS LIKE</span>
+                                <span className="value">{weatherData.main.feels_like}</span>
                             </div>
-                            <div class="wind">
-                                <span class="title">WINDSPEED</span>
-                                <span class="value">{weatherData.wind.speed}</span>
+                            <div className="wind">
+                                <span className="title">WINDSPEED</span>
+                                <span className="value">{weatherData.wind.speed}</span>
                             </div>
                         </div>
 
