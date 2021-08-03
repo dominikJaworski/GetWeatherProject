@@ -6,17 +6,19 @@ import 'tachyons';
 import WeatherIcon from '../Components/WeatherIcon';
 
 const APIkey = '23628a9de895c8a73840ced8190e3c96';
+//const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${APIkey}`)
 
 const CurrentForecast = (props) => {
     const [weatherData, setWeatherData] = useState(null);
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
-    let location = props.location;
+    let locationLat = props.latitude;
+    let locationLong = props.longitude;
 
     useEffect(() => {
         const fn = async () => {
             try {
-                const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${APIkey}`);
+                const result = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${locationLat}&lon=${locationLong}&exclude=minutely,hourly,daily,alerts&appid=${APIkey}`);
 
                 setIsLoaded(true);
                 setWeatherData(await result.json());
@@ -27,10 +29,10 @@ const CurrentForecast = (props) => {
             }
         };
         fn(); //calling the function defined above
-    }, [location]
+    }, [locationLat, locationLong]
     )
 
-
+    console.log("Latitude = ", locationLat, ", Longitude = ", locationLong, ", APIkey = ", APIkey);
 
     if (error) {
         return <div>Error: {error.message}</div>;
@@ -53,9 +55,9 @@ const CurrentForecast = (props) => {
                     </div>
                     <div className="weather-container">
 
-                        <WeatherIcon description={weatherData.weather[0].description}></WeatherIcon>
-                        <h1 className="weather-temp">{weatherData.main.temp}</h1>
-                        <h3 className="weather-desc">{weatherData.weather[0].description} </h3>
+                        <WeatherIcon description={weatherData.current.weather[0].description}></WeatherIcon>
+                        <h1 className="weather-temp">{weatherData.current.temp}</h1>
+                        <h3 className="weather-desc">{weatherData.current.weather[0].description}</h3>
 
                     </div>
                 </div>
@@ -65,15 +67,15 @@ const CurrentForecast = (props) => {
                         <div className="today-info">
                             <div className="humidity">
                                 <span className="title">HUMIDITY</span>
-                                <span className="value">{weatherData.main.humidity}</span>
+                                <span className="value">{weatherData.current.humidity}</span>
                             </div>
                             <div className="humidity">
                                 <span className="title">FEELS LIKE</span>
-                                <span className="value">{weatherData.main.feels_like}</span>
+                                <span className="value">{weatherData.current.feels_like}</span>
                             </div>
                             <div className="wind">
                                 <span className="title">WINDSPEED</span>
-                                <span className="value">{weatherData.wind.speed}</span>
+                                <span className="value">{weatherData.current.wind_speed}</span>
                             </div>
                         </div>
 
