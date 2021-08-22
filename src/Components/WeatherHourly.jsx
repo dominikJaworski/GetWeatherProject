@@ -1,20 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import WeatherIcon from './WeatherIcon';
-import "../CSS/HourlyForecast.css";
+import "./WeatherHourly.scss";
+import { format } from 'date-fns';
+import formatNumber from 'format-number';
 
 const WeatherHour = (props) => {
     const hourData = props.hour;
-    let time = hourData.dt;
+    const date = new Date(hourData.dt * 1000);
+
+    const day = format(date, 'L/d');
+    const time = format(date, 'h a');
+
+    const formatter = formatNumber({ round: 1 });
+    const temp = formatter(hourData.temp);
+    const feelsLike = formatter(hourData.feels_like);
 
     return(
-        <div className="weather-hourly-card">
-            <div className="hourly-date">{hourData.dt}</div>
-            <div className="hourly-time">{hourData.dt}</div>
-            <div className="hourly-temp">{hourData.temp}</div>
-            <div className="hourly-feels-like">{hourData.feels_like}</div>
+        <div className="hourly--card">
+            <div className="hourly--when">
+                <div className="hourly--hour">{time}</div>
+                <div className="hourly--day">{day}</div>
+            </div>
+            <div className="hourly-temp">{temp}&deg;</div>
+            <div className="hourly-feels-like">
+                <div className="temp">{feelsLike}&deg;</div>
+                <div className="description">feels like</div>
+            </div>
             <div className="hourly-description">{hourData.weather[0].description}</div>
             <div className="hourly-precipitation">{hourData.pop}</div>
-            <div className="hourly-humidity">{hourData.humidity}</div>
+            <div className="hourly-humidity">{hourData.humidity} %</div>
         </div>
     );
 
