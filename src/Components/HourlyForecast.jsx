@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import WeatherHour from './WeatherHour';
-import "../CSS/HourlyForecast.css";
+import WeatherHour from './WeatherHourly';
+import "./HourlyForecast.scss";
 import { getCurrentDateandTime } from "../OtherFunctions.js";
-import WeatherIcon from '../Components/WeatherIcon';
+import WeatherIcon from './WeatherIcon';
 
 const APIkey = '';
 //const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${APIkey}`)
@@ -43,7 +43,7 @@ const CurrentForecast = (props) => {
         }
         else {
         return (
-            <div className="container">
+            <div className="hourly--container">
                 <WeatherHour hour={weatherData.hourly[0]}></WeatherHour>
                 <WeatherHour hour={weatherData.hourly[1]}></WeatherHour>
                 <WeatherHour hour={weatherData.hourly[2]}></WeatherHour>

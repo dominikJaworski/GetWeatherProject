@@ -1,0 +1,45 @@
+.hourly--card {            
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5mm 2mm;
+    height: 35mm;
+  }
+
+.hourly--when {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    .hourly--hour {
+        font-weight: 700;
+        font-size: 7mm;
+    }
+}
+
+
+.hourly-temp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    font-size: 10mm;
+    font-weight: bold;
+}
+
+.hourly-feels-like {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .temp { 
+        align-self: center;
+        font-size: 5mm;
+    }
+
+    .description { 
+        align-self: center;
+        font-size: 3mm;
+    }
+}
+
