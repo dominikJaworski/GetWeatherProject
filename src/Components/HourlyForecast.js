@@ -1,30 +1,59 @@
-import React from 'react';
-import 'tachyons';
+import React, { useEffect, useState } from 'react';
+import WeatherHour from './WeatherHour';
+import "../CSS/HourlyForecast.css";
+import { getCurrentDateandTime } from "../OtherFunctions.js";
+import WeatherIcon from '../Components/WeatherIcon';
 
 const APIkey = '23628a9de895c8a73840ced8190e3c96';
-//think about translating city location to lat and lon for hourly and biweekly
+//const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${APIkey}`)
 
-const HourlyForecast = (props) => {
-    let location = props.location;
+const CurrentForecast = (props) => {
+    const [weatherData, setWeatherData] = useState(null);
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    let locationLat = props.latitude;
+    let locationLong = props.longitude;
 
-    // const fn = async () => {
-    //         try {
-    //             const result = await fetch(`pro.openweathermap.org/data/2.5/forecast/hourly?q=${location}&appid=${APIkey}`);
-
-    //             setIsLoaded(true);
-    //             setWeatherData(await result.json());
-    //         }
-    //         catch (error) {
-    //             setIsLoaded(true);
-    //             setError(error);
-    //         }
-    //     };
-    // fn();
-
-    return(
-        <div>hourly</div>
+    useEffect(() => {
+        const fn = async () => {
+            try {
+                const result = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${locationLat}&lon=${locationLong}&exclude=current,minutely,daily,alerts&units=metric&appid=${APIkey}`);
+                
+                setWeatherData(await result.json());
+                setIsLoaded(true);
+            }
+            catch (error) {
+                setIsLoaded(true);
+                setError(error);
+            }
+        };
+        fn(); //calling the function defined above
+    }, [locationLat, locationLong]
     )
+
+    console.log("Latitude = ", locationLat, ", Longitude = ", locationLong, ", APIkey = ", APIkey);
+
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+        return <div>Loading...</div>;
+    } else if (weatherData !== null) 
+        if (weatherData.cod === "404") {
+            return <div>data for that location not available</div>
+        }
+        else {
+        return (
+            <div className="container">
+                <WeatherHour hour={weatherData.hourly[0]}></WeatherHour>
+                <WeatherHour hour={weatherData.hourly[1]}></WeatherHour>
+                <WeatherHour hour={weatherData.hourly[2]}></WeatherHour>
+            </div>
+        );
+    }
+    else {
+        return <div> not found!</div>
+    }
 
 }
 
-export default HourlyForecast;
+export default CurrentForecast;
