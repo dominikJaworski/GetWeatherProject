@@ -18,10 +18,10 @@ const CurrentForecast = (props) => {
     useEffect(() => {
         const fn = async () => {
             try {
-                const result = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${locationLat}&lon=${locationLong}&exclude=minutely,hourly,daily,alerts&appid=${APIkey}`);
-
-                setIsLoaded(true);
+                const result = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${locationLat}&lon=${locationLong}&exclude=minutely,hourly,daily,alerts&units=metric&appid=${APIkey}`);
+                
                 setWeatherData(await result.json());
+                setIsLoaded(true);
             }
             catch (error) {
                 setIsLoaded(true);
@@ -31,8 +31,6 @@ const CurrentForecast = (props) => {
         fn(); //calling the function defined above
     }, [locationLat, locationLong]
     )
-
-    console.log("Latitude = ", locationLat, ", Longitude = ", locationLong, ", APIkey = ", APIkey);
 
     if (error) {
         return <div>Error: {error.message}</div>;
@@ -47,6 +45,7 @@ const CurrentForecast = (props) => {
             <div className="container">
 
                 <div className="weather-side">
+                    
                     <div className="weather-gradient">
 
                     </div>
@@ -90,18 +89,5 @@ const CurrentForecast = (props) => {
     }
 
 }
-
-/*
-{weatherData !== null ? (
-                    <li key={weatherData.sys.id}>
-                        {weatherData.name}<br></br>
-                        {weatherData.weather[0].description}<br></br>
-                        {weatherData.main.temp}<br></br>
-                        {weatherData.main.humidity}<br></br>
-                    </li>
-                ) : (
-                    <></>
-                )}
-*/
 
 export default CurrentForecast;

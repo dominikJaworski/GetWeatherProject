@@ -23,11 +23,12 @@ const App = (props) => {
       try {
         const result = await fetch(`http://www.mapquestapi.com/geocoding/v1/address?key=${APIkey}&location=${location}`);
 
-        setIsLoaded(true);
         const JSONresult = await result.json()
         setLat(JSONresult.results[0].locations[0].latLng.lat);
         setLong(JSONresult.results[0].locations[0].latLng.lng);
         console.log("At mount: Latitude = ", locationLat, ", Longitude = ", locationLong);
+        setIsLoaded(true);
+        //
       }
       catch (error) {
         setIsLoaded(true);
@@ -96,8 +97,8 @@ const App = (props) => {
           />
           <input type="submit" value="Submit" className='ba tc pa2 white bg-blue hover-bg-light-blue br2 shadow-2'></input>
         </form>
-        <p>{searchField}</p>
-        <p>{locationLat}, {locationLong}</p>
+        {/* <p>{searchField}</p>
+        <p>{locationLat}, {locationLong}</p> */}
         <button
           className='current-forecast-button ba tc pa2 white bg-blue hover-bg-light-blue br2 shadow-2'
           onClick={() => onCurrentForecastClick(searchField)}>Current Forecast</button>
@@ -117,93 +118,5 @@ const App = (props) => {
   }
 
 }
-
-// class App extends Component {
-
-//   constructor() {
-//     super();
-//     this.state = {
-//       searchField: '',
-//       forecastType: 0,
-//       location: 'detroit'
-//     }
-
-//     this.onSearchFieldChange = this.onSearchFieldChange.bind(this);
-//     this.onSearchFieldSubmit = this.onSearchFieldSubmit.bind(this);
-//   }
-
-//   onSearchFieldChange = (event) => {
-//     this.setState({ searchField: event.target.value })
-//   }
-
-//   onSearchFieldSubmit = (event) => {
-//     this.setState({ location: this.state.searchField });
-//     //alert('new location will be :' + this.state.searchField);
-//     event.preventDefault();
-//   }
-
-//   onCurrentForecastClick = () => {
-//     this.setState({ forecastType: 0 })
-//   }
-
-//   onHourlyForecast = () => {
-//     this.setState({ forecastType: 1 })
-//   }
-
-//   onBiweeklyForecast = () => {
-//     this.setState({ forecastType: 2 })
-//   }
-
-//   render() {
-
-//     //insert condition render here
-//     const whichWeatherType = this.state.forecastType;
-//     let weatherType;
-
-//     switch (whichWeatherType) {
-//       case 1:
-//         weatherType = <HourlyForecast location={this.state.location}></HourlyForecast>
-//         break;
-//       case 2:
-//         weatherType = <BiweeklyForecast location={this.state.location}></BiweeklyForecast>
-//         break;
-//       default:
-//         weatherType = <CurrentForecast location={this.state.location}></CurrentForecast>
-//     }
-
-//     return (
-//       <div className='tc'>
-//         <h1 style={{color: 'white'}}>Weather forecast</h1>
-//         {/* <SearchLocation searchField={this.onSearchFieldChange}>
-//         </SearchLocation> */}
-
-//         <form className='pa2' onSubmit={this.onSearchFieldSubmit}>
-//           <input
-//             className='pa3 ba b--green bg-lightest-blue'
-//             type='search'
-//             placeholder='Search Locations'
-//             onChange={this.onSearchFieldChange}
-//           />
-//           <input type="submit" value="Submit" className='ba tc pa2 white bg-blue hover-bg-light-blue br2 shadow-2'></input>
-//         </form>
-//         <p>{this.state.searchField}</p>
-//         <button
-//           className='current-forecast-button ba tc pa2 white bg-blue hover-bg-light-blue br2 shadow-2'
-//           onClick={() => this.onCurrentForecastClick(this.state.searchField)}>Current Forecast</button>
-
-//         <button
-//           className='current-forecast-button ba tc pa2 white bg-green hover-bg-light-green br2 shadow-2'
-//           onClick={() => this.onHourlyForecast()}>Hourly Forecast</button>
-
-//         <button
-//           className='current-forecast-button ba tc pa2 white bg-purple hover-bg-light-purple br2 shadow-2'
-//           onClick={() => this.onBiweeklyForecast()}>Biweekly Forecast</button>
-
-//         {weatherType}
-
-//       </div>
-//     );
-//   }
-// }
 
 export default App;

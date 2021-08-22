@@ -1,8 +1,7 @@
 export const getCurrentDateandTime = () => {
     const thisdate = new Date();
-    //REMINDER: change date string return
-    //const today = thisdate.getDate thisdate.getDate() + " / " + (thisdate.getMonth() + 1) + " / " + thisdate.getFullYear();
-    const today = <div><h2 className="day-dayname">{getDayOfWeek(thisdate.getDate())}</h2>
+    
+    const today = <div><h2 className="day-dayname">{getDayOfWeek(thisdate.getDay())}</h2>
     <span className="day-date">{getMonthName(thisdate.getMonth())} {thisdate.getDate()}, {thisdate.getFullYear()}</span></div>
 
     return today;
