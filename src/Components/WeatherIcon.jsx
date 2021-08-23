@@ -1,6 +1,7 @@
 import React from 'react';
-import "../CSS/CurrentForecast.css";
+import "../CSS/CurrentForecast.scss";
 import 'tachyons';
+
 
 const WeatherIcon = (props) => {
     let description = props.description;

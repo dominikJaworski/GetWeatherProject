@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import WeatherIcon from './WeatherIcon';
-import "./WeatherHourly.scss";
+import React from 'react';
+//import WeatherIcon from './WeatherIcon';
+import "../CSS/WeatherHourly.scss";
 import { format } from 'date-fns';
 import formatNumber from 'format-number';
 
@@ -16,10 +16,10 @@ const WeatherHour = (props) => {
     const feelsLike = formatter(hourData.feels_like);
 
     return(
-        <div className="hourly--card">
-            <div className="hourly--when">
-                <div className="hourly--hour">{time}</div>
-                <div className="hourly--day">{day}</div>
+        <div className="hourly-card">
+            <div className="hourly-when">
+                <div className="hourly-hour">{time}</div>
+                <div className="hourly-day">{day}</div>
             </div>
             <div className="hourly-temp">{temp}&deg;</div>
             <div className="hourly-feels-like">
@@ -27,8 +27,7 @@ const WeatherHour = (props) => {
                 <div className="description">feels like</div>
             </div>
             <div className="hourly-description">{hourData.weather[0].description}</div>
-            <div className="hourly-precipitation">{hourData.pop}</div>
-            <div className="hourly-humidity">{hourData.humidity} %</div>
+            <div className="hourly-precipitation">{hourData.pop}%</div>
         </div>
     );
 

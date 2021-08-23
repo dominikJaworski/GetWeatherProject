@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import WeatherHour from './WeatherHourly';
-import "./HourlyForecast.scss";
-import { getCurrentDateandTime } from "../OtherFunctions.js";
-import WeatherIcon from './WeatherIcon';
+import "../CSS/HourlyForecast.scss";
 
 const APIkey = '';
 //const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${APIkey}`)
@@ -31,8 +29,6 @@ const CurrentForecast = (props) => {
     }, [locationLat, locationLong]
     )
 
-    console.log("Latitude = ", locationLat, ", Longitude = ", locationLong, ", APIkey = ", APIkey);
-
     if (error) {
         return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
@@ -47,6 +43,20 @@ const CurrentForecast = (props) => {
                 <WeatherHour hour={weatherData.hourly[0]}></WeatherHour>
                 <WeatherHour hour={weatherData.hourly[1]}></WeatherHour>
                 <WeatherHour hour={weatherData.hourly[2]}></WeatherHour>
+                <WeatherHour hour={weatherData.hourly[3]}></WeatherHour>
+                <WeatherHour hour={weatherData.hourly[4]}></WeatherHour>
+                <WeatherHour hour={weatherData.hourly[5]}></WeatherHour>
+                <WeatherHour hour={weatherData.hourly[6]}></WeatherHour>
+                <WeatherHour hour={weatherData.hourly[7]}></WeatherHour>
+                <WeatherHour hour={weatherData.hourly[8]}></WeatherHour>
+                <WeatherHour hour={weatherData.hourly[9]}></WeatherHour>
+                <WeatherHour hour={weatherData.hourly[10]}></WeatherHour>
+                <WeatherHour hour={weatherData.hourly[11]}></WeatherHour>
+                <WeatherHour hour={weatherData.hourly[12]}></WeatherHour>
+                <WeatherHour hour={weatherData.hourly[13]}></WeatherHour>
+                <WeatherHour hour={weatherData.hourly[14]}></WeatherHour>
+                <WeatherHour hour={weatherData.hourly[15]}></WeatherHour>
+                
             </div>
         );
     }

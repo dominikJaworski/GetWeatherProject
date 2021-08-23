@@ -1,19 +1,27 @@
-.hourly--card {            
+.hourly-card {            
     display: flex; 
     flex-direction: row;
     justify-content: space-between;
-    padding: 5mm 2mm;
+    padding-top: 5mm 2mm;
+    margin-top: 3mm;
+    outline: 2px solid white;
     height: 35mm;
+    border-radius: 10px;
+    background-color: #869dcc;
   }
 
-.hourly--when {
+.hourly-when {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 
-    .hourly--hour {
+    .hourly-hour {
         font-weight: 700;
         font-size: 7mm;
+    }
+
+    .hourly-date {
+        font-size: 6mm;
     }
 }
 
@@ -43,3 +51,17 @@
     }
 }
 
+.hourly-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+}
+
+.hourly-precipitation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
+}

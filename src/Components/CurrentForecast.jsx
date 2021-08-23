@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import "../CSS/CurrentForecast.css"
-import "../Components/WeatherIcon";
+import "../CSS/CurrentForecast.scss"
+import "./WeatherIcon";
 import { getCurrentDateandTime } from "../OtherFunctions.js";
 import 'tachyons';
-import WeatherIcon from '../Components/WeatherIcon';
+import WeatherIcon from './WeatherIcon';
 
 const APIkey = '';
 //const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${APIkey}`)

@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 //import SearchLocation from './Components/SearchLocation';
 import HourlyForecast from './Components/HourlyForecast';
 import CurrentForecast from './Components/CurrentForecast';
@@ -26,7 +26,6 @@ const App = (props) => {
         const JSONresult = await result.json()
         setLat(JSONresult.results[0].locations[0].latLng.lat);
         setLong(JSONresult.results[0].locations[0].latLng.lng);
-        console.log("At mount: Latitude = ", locationLat, ", Longitude = ", locationLong);
         setIsLoaded(true);
         //
       }
@@ -75,7 +74,6 @@ const App = (props) => {
       weatherType = <BiweeklyForecast latitude={locationLat} longitude={locationLong}></BiweeklyForecast>
       break;
     default:
-      console.log("Before the current: Latitude = ", locationLat, ", Longitude = ", locationLong);
       weatherType = <CurrentForecast latitude={locationLat} longitude={locationLong}></CurrentForecast>
   }
 

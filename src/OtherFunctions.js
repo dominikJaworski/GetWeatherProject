@@ -35,7 +35,7 @@ const getMonthName = (monthNumber) => {
     }
 }
 
-const getDayOfWeek = (dayNumber) => {
+export const getDayOfWeek = (dayNumber) => {
     switch(dayNumber){
         case 1: return "Monday"
             ;
