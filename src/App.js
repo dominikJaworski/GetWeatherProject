@@ -14,7 +14,6 @@ const App = (props) => {
   const [locationLat, setLat] = useState("");
   const [locationLong, setLong] = useState("");
   const [forecastType, setForecastType] = useState(0);
-  const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
   //set state
@@ -30,8 +29,7 @@ const App = (props) => {
         //
       }
       catch (error) {
-        setIsLoaded(true);
-        setError(error);
+        setIsLoaded(true);        
       }
     }
     fetchGeocode();

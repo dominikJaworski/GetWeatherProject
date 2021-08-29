@@ -3,11 +3,9 @@ import "../CSS/CurrentForecast.scss";
 import 'tachyons';
 
 
-const WeatherIcon = (props) => {
-    let description = props.description;
-
+const WeatherIcon = ({description}) => {
     return (
-        <img src={require("../Icons/sunny.png")} alt="" width="56" height="56"></img>
+        <img src="/icons/sunny.png" alt={description} width="56" height="56"></img>
     )
 }
 

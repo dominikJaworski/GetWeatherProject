@@ -32,7 +32,7 @@ const CurrentForecast = (props) => {
     
     if(weatherData !== null){
         console.log("2. latitude: ", locationLat, " longitude: ", locationLong);
-        console.log("biweeklyforecast test: ", weatherData.daily[0]);
+        console.log("biweeklyforecast test: ", weatherData);
     }
     
 
@@ -48,26 +48,10 @@ const CurrentForecast = (props) => {
         }
         else {
             
-        return (
-            
+        return (            
             <div className="Biweekly-container">
-                    <WeatherDay day={weatherData.daily[0]}></WeatherDay>
-                    <WeatherDay day={weatherData.daily[1]}></WeatherDay>
-                    <WeatherDay day={weatherData.daily[2]}></WeatherDay>
-                    <WeatherDay day={weatherData.daily[3]}></WeatherDay>
-                    <WeatherDay day={weatherData.daily[4]}></WeatherDay>
-                    <WeatherDay day={weatherData.daily[5]}></WeatherDay>
-                    <WeatherDay day={weatherData.daily[6]}></WeatherDay>
-                    <WeatherDay day={weatherData.daily[7]}></WeatherDay>
-                    <WeatherDay day={weatherData.daily[8]}></WeatherDay>
-                    <WeatherDay day={weatherData.daily[9]}></WeatherDay>
-                    <WeatherDay day={weatherData.daily[10]}></WeatherDay>
-                    <WeatherDay day={weatherData.daily[11]}></WeatherDay>
-                    <WeatherDay day={weatherData.daily[12]}></WeatherDay>
-                    <WeatherDay day={weatherData.daily[13]}></WeatherDay>
-                    <WeatherDay day={weatherData.daily[14]}></WeatherDay>
-                    <WeatherDay day={weatherData.daily[15]}></WeatherDay>
-                </div>
+                {weatherData.daily.map((day) => (<WeatherDay key={day.dt} day={day}></WeatherDay>))}
+            </div>
         );
     }
     else {
