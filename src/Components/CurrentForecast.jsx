@@ -5,7 +5,7 @@ import { getCurrentDateandTime } from "../OtherFunctions.js";
 import 'tachyons';
 import WeatherIcon from './WeatherIcon';
 
-const APIkey = '';
+const APIkey = process.env.REACT_APP_WEATHER_API_KEY;
 //const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${APIkey}`)
 
 const CurrentForecast = (props) => {
